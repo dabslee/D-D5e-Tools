@@ -15,3 +15,19 @@ body {
 #footer {
     padding: 1rem 0;
 }
+
+.race-image {
+    height: 20rem;
+    margin: 1rem;
+}
+
+.badge {
+    margin: 0.1rem 0.2rem;
+}
+
+.selectable-card {
+    cursor: pointer;
+}
+.selectable-card:hover {
+    box-shadow: 0px 0px 1rem rgba(black, 0.1);
+}
