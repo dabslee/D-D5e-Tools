@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div id="character_creator_react"></div>
+<script type="text/babel" src="{% static 'character_creator.jsx' %}"></script>
+{% endblock %}

@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container {
+  max-width: 80rem;
+}
+
+#content {
+  flex: 2 2 auto;
+}
+
+#footer {
+  padding: 1rem 0;
+}
+
+/*# sourceMappingURL=main.css.map */
