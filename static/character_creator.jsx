@@ -37,9 +37,9 @@ class ChararacterCreatorApp extends React.Component {
                                                 <li><b>Proficiencies:</b>
                                                     <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Battleaxe</span>
                                                     <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Handaxe</span>
-                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Light hammer</span>
-                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Warhammer</span>
-                                                    <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Artisan's Tools (1)</span>
+                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Light tools</span>
+                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Wartools</span>
+                                                    <span className="badge bg-secondary"><i className="fas fa-tools"></i> Artisan's Tools (1)</span>
                                                 </li>
                                                 <li><b>Other traits:</b>
                                                     <span className="badge bg-primary"><i className="fas fa-eye"></i> Darkvision</span>
@@ -100,11 +100,11 @@ class ChararacterCreatorApp extends React.Component {
                                                     <b>Hit points:</b><span className="badge bg-success"><i className="fas fa-heart"></i> 6 + Constitution Modifier</span>
                                                 </li>
                                                 <li><b>Proficiencies:</b>
-                                                    <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Dagger</span>
-                                                    <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Darts</span>
-                                                    <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Sling</span>
-                                                    <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Quarterstaff</span>
-                                                    <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Light Crossbow</span>
+                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Dagger</span>
+                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Darts</span>
+                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Sling</span>
+                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Quarterstaff</span>
+                                                    <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Light Crossbow</span>
                                                 </li>
                                                 <li><b>Saving throws:</b>
                                                     <span className="badge bg-light text-dark"><i className="fas fa-star"></i> Intelligence</span>
@@ -125,9 +125,9 @@ class ChararacterCreatorApp extends React.Component {
                                                 <li><b>Starting equipment:</b>
                                                     <ul>
                                                         <li><span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Quarterstaff</span> or <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Dagger</span></li>
-                                                        <li><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Component Pouch</span> or <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Arcane Focus</span></li>
-                                                        <li><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Scholar's Pack</span> or <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Explorer's Pack</span></li>
-                                                        <li><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Spellbook</span></li>
+                                                        <li><span className="badge bg-secondary"><i className="fas fa-tools"></i> Component Pouch</span> or <span className="badge bg-secondary"><i className="fas fa-tools"></i> Arcane Focus</span></li>
+                                                        <li><span className="badge bg-secondary"><i className="fas fa-tools"></i> Scholar's Pack</span> or <span className="badge bg-secondary"><i className="fas fa-tools"></i> Explorer's Pack</span></li>
+                                                        <li><span className="badge bg-secondary"><i className="fas fa-tools"></i> Spellbook</span></li>
                                                     </ul>
                                                     <div>Alternatively, start with <b className="text-warning">4d4 x 10gp</b> and buy equipment of your choice.</div>
                                                 </li>
@@ -280,7 +280,7 @@ class ChararacterCreatorApp extends React.Component {
                                     <b>Additional proficiencies: </b>
                                     <span className="badge bg-dark"><i className="fas fa-book"></i> Insight</span>
                                     <span className="badge bg-dark"><i className="fas fa-book"></i> Religion</span>
-                                    <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Disguise Kit</span>
+                                    <span className="badge bg-secondary"><i className="fas fa-tools"></i> Disguise Kit</span>
                                 </p>
                             </div>
                         </div>
@@ -292,9 +292,9 @@ class ChararacterCreatorApp extends React.Component {
                     <ul>
                         <label><input type="radio" name="start-equip-method-field"/> Go with the default starting equipment given your race, class, and background:</label>
                         <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Quarterstaff</span>
-                        <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Component Pouch</span>
-                        <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Scholar's Pack</span>
-                        <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Spellbook</span>
+                        <span className="badge bg-secondary"><i className="fas fa-tools"></i> Component Pouch</span>
+                        <span className="badge bg-secondary"><i className="fas fa-tools"></i> Scholar's Pack</span>
+                        <span className="badge bg-secondary"><i className="fas fa-tools"></i> Spellbook</span>
                         <br/>
                         <label><input type="radio" name="start-equip-method-field"/> Receive <span className="text-warning"><b>110gp</b></span> to spend on the equipment below.</label>
                     </ul>
@@ -318,9 +318,9 @@ class ChararacterCreatorApp extends React.Component {
                         <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
                             <b>Other equipment:</b>
                             <div className="mb-3 d-flex flex-column equip-box">
-                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Backpack</span></label>
-                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Clothes</span></label>
-                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Paper</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-tools"></i> Backpack</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-tools"></i> Clothes</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-tools"></i> Paper</span></label>
                             </div>
                         </div>
                         <div className="col-sm-3 col-12">
