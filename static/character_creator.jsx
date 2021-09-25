@@ -129,7 +129,7 @@ class ChararacterCreatorApp extends React.Component {
                                                         <li><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Scholar's Pack</span> or <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Explorer's Pack</span></li>
                                                         <li><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Spellbook</span></li>
                                                     </ul>
-                                                    <div>Alternatively, start with <b class="text-warning">4d4 x 10gp</b> and buy equipment of your choice.</div>
+                                                    <div>Alternatively, start with <b className="text-warning">4d4 x 10gp</b> and buy equipment of your choice.</div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -139,7 +139,44 @@ class ChararacterCreatorApp extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <h2 className="mt-3">❸ Roll for ability scores</h2>
+                    <h2 className="mt-3">❸ Determine ability scores</h2>
+                    <div className="d-flex flex-row mb-3">
+                        <button className="btn btn-primary"><i className="fas fa-dice-d20"></i> Roll for ability scores</button>
+                        <div className="badge bg-secondary ability-score-badge" draggable="true">15</div>
+                        <div className="badge bg-secondary ability-score-badge" draggable="true">14</div>
+                        <div className="badge bg-secondary ability-score-badge" draggable="true">13</div>
+                        <div className="badge bg-secondary ability-score-badge" draggable="true">12</div>
+                        <div className="badge bg-secondary ability-score-badge" draggable="true">10</div>
+                        <div className="badge bg-secondary ability-score-badge" draggable="true">8</div>
+                    </div>
+                    <div>
+                        <div className="input-group flex-nowrap mb-1">
+                            <span className="input-group-text">Strength</span>
+                            <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
+                        </div>
+                        <div className="input-group flex-nowrap mb-1">
+                            <span className="input-group-text">Dexterity</span>
+                            <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
+                        </div>
+                        <div className="input-group flex-nowrap mb-1">
+                            <span className="input-group-text">Constitution</span>
+                            <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
+                            <span class="badge bg-success">+2</span>
+                        </div>
+                        <div className="input-group flex-nowrap mb-1">
+                            <span className="input-group-text">Intelligence</span>
+                            <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
+                        </div>
+                        <div className="input-group flex-nowrap mb-1">
+                            <span className="input-group-text">Wisdom</span>
+                            <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
+                            <span class="badge bg-success">+1</span>
+                        </div>
+                        <div className="input-group flex-nowrap mb-1">
+                            <span className="input-group-text">Charisma</span>
+                            <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
+                        </div>
+                    </div>
                 </form>
             </div>
         );

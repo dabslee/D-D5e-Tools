@@ -30,7 +30,11 @@ body {
 }
 
 .selectable-card:hover {
-  box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 1rem var(--bs-gray-300);
+}
+
+.ability-score-badge {
+  cursor: move;
 }
 
 /*# sourceMappingURL=main.css.map */
