@@ -289,7 +289,7 @@ class ChararacterCreatorApp extends React.Component {
                     <p>You have one of two options for choosing your starting equipment:</p>
                     <ul>
                         <label><input type="radio" name="start-equip-method-field"/> Go with the default starting equipment given your race, class, and background:</label>
-                        <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Quarterstaff</span>
+                        <span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Quarterstaff</span>
                         <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Component Pouch</span>
                         <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Scholar's Pack</span>
                         <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Spellbook</span>
@@ -299,28 +299,28 @@ class ChararacterCreatorApp extends React.Component {
                     <p>Hold the <kbd>CTRL</kbd> key to select multiple items. Make sure that your equipment weight does not exceed your wealth or your carrying capacity.</p>
                     <div className="d-flex flex-sm-row flex-column">
                         <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
-                            <label for="weapons-field" className="form-label"><b>Weapons:</b></label>
-                            <select className="form-select mb-3" multiple id="weapons-field">
-                                <option>Club</option>
-                                <option>Dagger</option>
-                                <option>Greatclub</option>
-                            </select>
+                            <b>Weapons:</b>
+                            <div className="mb-3 d-flex flex-column" style={{height: "10rem", resize: "vertical", overflow: "scroll"}}>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Quarterstaff</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Dagger</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Greataxe</span></label>
+                            </div>
                         </div>
                         <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
-                            <label for="armor-field" className="form-label"><b>Armor:</b></label>
-                            <select className="form-select mb-3" multiple id="armor-field">
-                                <option>Padded</option>
-                                <option>Leather</option>
-                                <option>Hide</option>
-                            </select>
+                            <b>Armor and shields:</b>
+                            <div className="mb-3 d-flex flex-column" style={{height: "10rem", resize: "vertical", overflow: "scroll"}}>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-shield-alt"></i> Padded</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-shield-alt"></i> Leather</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-shield-alt"></i> Hide</span></label>
+                            </div>
                         </div>
                         <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
-                            <label for="armor-field" className="form-label"><b>Other equipment:</b></label>
-                            <select className="form-select mb-3" multiple id="armor-field">
-                                <option>Backpack</option>
-                                <option>Clothes</option>
-                                <option>Paper</option>
-                            </select>
+                            <b>Other equipment:</b>
+                            <div className="mb-3 d-flex flex-column" style={{height: "10rem", resize: "vertical", overflow: "scroll"}}>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Backpack</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Clothes</span></label>
+                                <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Paper</span></label>
+                            </div>
                         </div>
                         <div className="col-sm-3 col-12">
                             <p>Wealth remaining: <span className="text-warning"><b>110gp</b></span></p>
