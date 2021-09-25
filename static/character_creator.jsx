@@ -161,7 +161,7 @@ class ChararacterCreatorApp extends React.Component {
                         <div className="input-group flex-nowrap mb-1">
                             <span className="input-group-text">Constitution</span>
                             <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
-                            <span class="badge bg-success">+2</span>
+                            <span className="badge bg-success">+2</span>
                         </div>
                         <div className="input-group flex-nowrap mb-1">
                             <span className="input-group-text">Intelligence</span>
@@ -170,12 +170,189 @@ class ChararacterCreatorApp extends React.Component {
                         <div className="input-group flex-nowrap mb-1">
                             <span className="input-group-text">Wisdom</span>
                             <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
-                            <span class="badge bg-success">+1</span>
+                            <span className="badge bg-success">+1</span>
                         </div>
                         <div className="input-group flex-nowrap mb-1">
                             <span className="input-group-text">Charisma</span>
                             <input className="form-control" style={{maxWidth: "fit-content"}} placeholder="Drag score here"/>
                         </div>
+                    </div>
+                    <h2 className="mt-3">❹ Describe your character</h2>
+                    <div className="d-flex flex-sm-row flex-column">
+                        <div className="col-5 mb-3">
+                            <label for="alignment-field" className="form-label"><b>Alignment:</b></label>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> Lawful good</span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> Neutral good</span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> Chaotic good</span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> Lawful neutral</span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> True neutral</span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> Chaotic neutral</span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> Lawful evil</span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> True evil</span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <input type="radio" className="form-check-input" name="alignment-field" />
+                                            <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> Chaotic evil</span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div className="col-sm-5 mb-3">
+                            <div className="d-flex flex-row mb-2" style={{height: "fit-content", alignItems: "baseline"}}>
+                                <label for="ideals-field" className="form-label me-3"><b>Ideals:</b></label>
+                                <input type="text" className="form-control" id="ideals-field"/>
+                            </div>
+                            <div className="d-flex flex-row" style={{height: "fit-content", alignItems: "baseline"}}>
+                                <label for="flaws-field" className="form-label me-3"><b>Flaws:</b></label>
+                                <input type="text" className="form-control" id="flaws-field"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-sm-row flex-column">
+                        <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
+                            <label for="height-field" className="form-label me-3"><b>Height:</b></label>
+                            <input type="text" className="form-control mb-3 me-3" id="height-field"></input>
+                        </div>
+                        <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
+                            <label for="weight-field" className="form-label me-3"><b>Weight:</b></label>
+                            <input type="text" className="form-control mb-3 me-3" id="weight-field"></input>
+                        </div>
+                        <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
+                            <label for="eye-color-field" className="form-label me-3"><b>Eye color:</b></label>
+                            <input type="color" className="form-control form-control-color mb-3" style={{height: "fit-content"}} id="eye-color-field"></input>
+                        </div>
+                        <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
+                            <label for="hair-color-field" className="form-label me-3"><b>Hair color:</b></label>
+                            <input type="color" className="form-control form-control-color mb-3" style={{height: "fit-content"}} id="hair-color-field"></input>
+                        </div>
+                        <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
+                            <label for="skin-color-field" className="form-label me-3"><b>Skin color:</b></label>
+                            <input type="color" className="form-control form-control-color mb-3" style={{height: "fit-content"}} id="skin-color-field"></input>
+                        </div>
+                    </div>
+                    <label for="other-descriptors-field" className="form-label"><b>Other notable descriptors:</b></label>
+                    <textarea className="form-control mb-3" rows="2" id="other-descriptors-field"></textarea>
+                    <b>Background:</b>
+                    <div className="card selectable-card">
+                        <div className="card-body d-flex flex-column">
+                            <div className="d-flex flex-row">
+                                <h5 className="card-title">
+                                    <span className="me-3">Acolyte</span>
+                                </h5>
+                                <span className="link-primary" data-bs-toggle="collapse" href="#acolyteCollapse" role="button" aria-expanded="false" aria-controls="acolyteCollapse">
+                                    [Toggle info]
+                                </span>
+                            </div>
+                            <div id="acolyteCollapse" className="collapse">
+                                <p>You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine.</p>
+                                <p>
+                                    <b>Additional proficiencies: </b>
+                                    <span className="badge bg-dark"><i className="fas fa-book"></i> Insight</span>
+                                    <span className="badge bg-dark"><i className="fas fa-book"></i> Religion</span>
+                                    <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Disguise Kit</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="backstory-field" className="form-label"><b>Backstory:</b></label>
+                    <textarea className="form-control mb-3" rows="5" id="backstory-field"></textarea>
+                    <h2 className="mt-3">❺ Choose starting equipment</h2>
+                    <p>You have one of two options for choosing your starting equipment:</p>
+                    <ul>
+                        <label><input type="radio" name="start-equip-method-field"/> Go with the default starting equipment given your race, class, and background:</label>
+                        <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Quarterstaff</span>
+                        <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Component Pouch</span>
+                        <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Scholar's Pack</span>
+                        <span className="badge bg-secondary"><i className="fas fa-hammer"></i> Spellbook</span>
+                        <br/>
+                        <label><input type="radio" name="start-equip-method-field"/> Receive <span class="text-warning"><b>110gp</b></span> to spend on the equipment below.</label>
+                    </ul>
+                    <p>Hold the <kbd>CTRL</kbd> key to select multiple items. Make sure that your equipment weight does not exceed your wealth or your carrying capacity.</p>
+                    <div className="d-flex flex-sm-row flex-column">
+                        <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
+                            <label for="weapons-field" className="form-label"><b>Weapons:</b></label>
+                            <select className="form-select mb-3" multiple id="weapons-field">
+                                <option>Club</option>
+                                <option>Dagger</option>
+                                <option>Greatclub</option>
+                            </select>
+                        </div>
+                        <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
+                            <label for="armor-field" className="form-label"><b>Armor:</b></label>
+                            <select className="form-select mb-3" multiple id="armor-field">
+                                <option>Padded</option>
+                                <option>Leather</option>
+                                <option>Hide</option>
+                            </select>
+                        </div>
+                        <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
+                            <label for="armor-field" className="form-label"><b>Other equipment:</b></label>
+                            <select className="form-select mb-3" multiple id="armor-field">
+                                <option>Backpack</option>
+                                <option>Clothes</option>
+                                <option>Paper</option>
+                            </select>
+                        </div>
+                        <div className="col-sm-3 col-12">
+                            <p>Wealth remaining: <span class="text-warning"><b>110gp</b></span></p>
+                            <p>Total weight: <b><span class="text-success">0</span> / 150 lbs</b></p>
+                        </div>
+                    </div>
+                    <h2 className="mt-3">❻ Finalize</h2>
+                    <label for="additional-notes-field" className="form-label"><b>Any additional notes about character:</b></label>
+                    <textarea className="form-control mb-3" rows="5" id="additional-notes-field"></textarea>
+                    <div class="d-flex flex-sm-row flex-column" style={{alignItems: "center"}}>
+                        <b class="me-3 mb-3">Export character as: </b>
+                        <button class="btn btn-primary me-3 mb-2"><i class="fas fa-file-code"></i> JSON file</button>
+                        <button class="btn btn-primary me-3 mb-2"><i class="fas fa-file-pdf"></i> Editable PDF character sheet</button>
+                        <button class="btn btn-primary me-3 mb-2"><i class="fas fa-file-pdf"></i> Non-editable PDF character sheet</button>
                     </div>
                 </form>
             </div>

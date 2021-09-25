@@ -1,3 +1,7 @@
+:root {
+  --bs-light-rgb: 230,230,230;
+}
+
 body {
   display: flex;
   flex-direction: column;
