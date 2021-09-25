@@ -140,14 +140,16 @@ class ChararacterCreatorApp extends React.Component {
                         </div>
                     </div>
                     <h2 className="mt-3">❸ Determine ability scores</h2>
-                    <div className="d-flex flex-row mb-3">
-                        <button className="btn btn-primary"><i className="fas fa-dice-d20"></i> Roll for ability scores</button>
-                        <div className="badge bg-secondary ability-score-badge" draggable="true">15</div>
-                        <div className="badge bg-secondary ability-score-badge" draggable="true">14</div>
-                        <div className="badge bg-secondary ability-score-badge" draggable="true">13</div>
-                        <div className="badge bg-secondary ability-score-badge" draggable="true">12</div>
-                        <div className="badge bg-secondary ability-score-badge" draggable="true">10</div>
-                        <div className="badge bg-secondary ability-score-badge" draggable="true">8</div>
+                    <div className="d-flex flex-sm-row flex-column">
+                        <button className="btn btn-primary mb-3"><i className="fas fa-dice-d20"></i> Roll for ability scores</button>
+                        <div className="d-flex flex-row mb-3">
+                            <div className="ability-score-badge" draggable="true">15</div>
+                            <div className="ability-score-badge" draggable="true">14</div>
+                            <div className="ability-score-badge" draggable="true">13</div>
+                            <div className="ability-score-badge" draggable="true">12</div>
+                            <div className="ability-score-badge" draggable="true">10</div>
+                            <div className="ability-score-badge" draggable="true">8</div>
+                        </div>
                     </div>
                     <div>
                         <div className="input-group flex-nowrap mb-1">
@@ -180,7 +182,7 @@ class ChararacterCreatorApp extends React.Component {
                     <h2 className="mt-3">❹ Describe your character</h2>
                     <div className="d-flex flex-sm-row flex-column">
                         <div className="col-sm-5 col-12 mb-3">
-                            <label for="alignment-field" className="form-label"><b>Alignment:</b></label>
+                            <label htmlFor="alignment-field" className="form-label"><b>Alignment:</b></label>
                             <div className="d-flex flex-column">
                                 <div className="d-flex flex-sm-row flex-column">
                                     <label className="col-sm-4 col-12">
@@ -228,38 +230,38 @@ class ChararacterCreatorApp extends React.Component {
                         </div>
                         <div className="col-sm-5 mb-3">
                             <div className="d-flex flex-row mb-2" style={{height: "fit-content", alignItems: "baseline"}}>
-                                <label for="ideals-field" className="form-label me-3"><b>Ideals:</b></label>
+                                <label htmlFor="ideals-field" className="form-label me-3"><b>Ideals:</b></label>
                                 <input type="text" className="form-control" id="ideals-field"/>
                             </div>
                             <div className="d-flex flex-row" style={{height: "fit-content", alignItems: "baseline"}}>
-                                <label for="flaws-field" className="form-label me-3"><b>Flaws:</b></label>
+                                <label htmlFor="flaws-field" className="form-label me-3"><b>Flaws:</b></label>
                                 <input type="text" className="form-control" id="flaws-field"/>
                             </div>
                         </div>
                     </div>
                     <div className="d-flex flex-sm-row flex-column">
                         <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
-                            <label for="height-field" className="form-label me-3"><b>Height:</b></label>
+                            <label htmlFor="height-field" className="form-label me-3"><b>Height:</b></label>
                             <input type="text" className="form-control mb-3 me-3" id="height-field"></input>
                         </div>
                         <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
-                            <label for="weight-field" className="form-label me-3"><b>Weight:</b></label>
+                            <label htmlFor="weight-field" className="form-label me-3"><b>Weight:</b></label>
                             <input type="text" className="form-control mb-3 me-3" id="weight-field"></input>
                         </div>
                         <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
-                            <label for="eye-color-field" className="form-label me-3"><b>Eye color:</b></label>
+                            <label htmlFor="eye-color-field" className="form-label me-3"><b>Eye color:</b></label>
                             <input type="color" className="form-control form-control-color mb-3" style={{height: "fit-content"}} id="eye-color-field"></input>
                         </div>
                         <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
-                            <label for="hair-color-field" className="form-label me-3"><b>Hair color:</b></label>
+                            <label htmlFor="hair-color-field" className="form-label me-3"><b>Hair color:</b></label>
                             <input type="color" className="form-control form-control-color mb-3" style={{height: "fit-content"}} id="hair-color-field"></input>
                         </div>
                         <div className="d-flex flex-row col-sm-2 col-12" style={{alignItems: "center"}}>
-                            <label for="skin-color-field" className="form-label me-3"><b>Skin color:</b></label>
+                            <label htmlFor="skin-color-field" className="form-label me-3"><b>Skin color:</b></label>
                             <input type="color" className="form-control form-control-color mb-3" style={{height: "fit-content"}} id="skin-color-field"></input>
                         </div>
                     </div>
-                    <label for="other-descriptors-field" className="form-label"><b>Other notable descriptors:</b></label>
+                    <label htmlFor="other-descriptors-field" className="form-label"><b>Other notable descriptors:</b></label>
                     <textarea className="form-control mb-3" rows="2" id="other-descriptors-field"></textarea>
                     <b>Background:</b>
                     <div className="card selectable-card">
@@ -283,7 +285,7 @@ class ChararacterCreatorApp extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <label for="backstory-field" className="form-label"><b>Backstory:</b></label>
+                    <label htmlFor="backstory-field" className="form-label"><b>Backstory:</b></label>
                     <textarea className="form-control mb-3" rows="5" id="backstory-field"></textarea>
                     <h2 className="mt-3">❺ Choose starting equipment</h2>
                     <p>You have one of two options for choosing your starting equipment:</p>
@@ -296,11 +298,10 @@ class ChararacterCreatorApp extends React.Component {
                         <br/>
                         <label><input type="radio" name="start-equip-method-field"/> Receive <span className="text-warning"><b>110gp</b></span> to spend on the equipment below.</label>
                     </ul>
-                    <p>Hold the <kbd>CTRL</kbd> key to select multiple items. Make sure that your equipment weight does not exceed your wealth or your carrying capacity.</p>
                     <div className="d-flex flex-sm-row flex-column">
                         <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
                             <b>Weapons:</b>
-                            <div className="mb-3 d-flex flex-column" style={{height: "10rem", resize: "vertical", overflow: "scroll"}}>
+                            <div className="mb-3 d-flex flex-column equip-box">
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Quarterstaff</span></label>
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Dagger</span></label>
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-fist-raised"></i> Greataxe</span></label>
@@ -308,7 +309,7 @@ class ChararacterCreatorApp extends React.Component {
                         </div>
                         <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
                             <b>Armor and shields:</b>
-                            <div className="mb-3 d-flex flex-column" style={{height: "10rem", resize: "vertical", overflow: "scroll"}}>
+                            <div className="mb-3 d-flex flex-column equip-box">
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-shield-alt"></i> Padded</span></label>
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-shield-alt"></i> Leather</span></label>
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-shield-alt"></i> Hide</span></label>
@@ -316,7 +317,7 @@ class ChararacterCreatorApp extends React.Component {
                         </div>
                         <div className="col-sm-3 col-12 me-3" style={{alignItems: "center"}}>
                             <b>Other equipment:</b>
-                            <div className="mb-3 d-flex flex-column" style={{height: "10rem", resize: "vertical", overflow: "scroll"}}>
+                            <div className="mb-3 d-flex flex-column equip-box">
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Backpack</span></label>
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Clothes</span></label>
                                 <label><input className="form-check-input" type="checkbox"/><span className="badge bg-secondary"><i className="fas fa-hammer"></i> Paper</span></label>
@@ -328,7 +329,7 @@ class ChararacterCreatorApp extends React.Component {
                         </div>
                     </div>
                     <h2 className="mt-3">❻ Finalize</h2>
-                    <label for="additional-notes-field" className="form-label"><b>Any additional notes about character:</b></label>
+                    <label htmlFor="additional-notes-field" className="form-label"><b>Any additional notes about character:</b></label>
                     <textarea className="form-control mb-3" rows="5" id="additional-notes-field"></textarea>
                     <div className="d-flex flex-sm-row flex-column" style={{alignItems: "center"}}>
                         <b className="me-3 mb-3">Export character as: </b>

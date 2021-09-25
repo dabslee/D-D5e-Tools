@@ -39,6 +39,23 @@ body {
 
 .ability-score-badge {
   cursor: move;
+  background-color: var(--bs-secondary);
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  margin: 0 0.2rem;
+  border-radius: 0.5rem;
+  width: 2.5rem;
+  text-align: center;
+}
+
+.equip-box {
+  height: 10rem;
+  resize: vertical;
+  overflow: scroll;
+  border: solid 1px;
+  border-color: rgb(var(--bs-light-rgb));
+  padding: 0.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */
