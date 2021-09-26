@@ -5,5 +5,43 @@ Home
 {% endblock %}
 
 {% block content %}
-<p>Home</p>
+<h1 class="mt-5">Brandon's D&D5e Tools</h1>
+<p>
+    Welcome to <i>Brandon's D&D5e Tools</i>, a set of online tools designed to help players (especially new players) navigate D&D5e.
+    This creator relies on the <a href="https://www.dndbeyond.com">D&D Beyond</a> website for a lot of its content (e.g. images, descriptions, or rules).
+    These projects are not commercial and cedes all rights to the original creators of D&D.
+</p>
+<p>Check out my <a href="https://brandonssandbox.com/">personal website</a> and <a href="https://github.com/dabslee">GitHub</a> for more of my projects, or <a href="">buy me a coffee</a> to support my work!</p>
+<div class="d-flex flex-sm-row flex-column justify-content-between mt-4">
+    <a href="{% url 'dnd_app:character_creator' %}" class="card col-sm-4 text-center selectable-project mb-3">
+        <div class="card-body">
+            <h5>Character Creator</h5>
+            <p>A step-by-step D&D5e character builder.</p>
+            <img src="https://www.dndbeyond.com/avatars/thumbnails/6/258/420/618/636271801914013762.png" style="width: 15rem"/>
+        </div>
+    </a>
+    <a href="{% url 'dnd_app:character_creator' %}" class="card col-sm-4 text-center selectable-project mb-3">
+        <div class="card-body">
+            <h5>Coin Converter</h5>
+            <p>A tool to convert a set of currencies (cp, sp, etc.) to a single currency of your choosing.</p>
+            <img src="https://lh3.googleusercontent.com/proxy/DMnVzo3J_L8GU0VBdh2MyezlY2xIqDTwntb73wzZjJdgV_FoqG78cCb7PHnXFOLgblWyAd6eSt_Zlfaix3FoYFCJ3E6I3AFElfmaicbovIge3MnWrz-U1LgW4-KKV0XVcSJ3Pws-PwjYWbAVU41yhCnJCbVw8eFDCN4R" style="width: 15rem"/>
+        </div>
+    </a>
+    <div class="col-sm-3 mb-3">
+        <h5>Other useful projects:</h5>
+        <p class="text-muted"><i>(By people other than me)</i></p>
+        <a href="{% url 'dnd_app:character_creator' %}" class="card selectable-project mb-3">
+            <div class="card-body">
+                <h5>D&D5e Beyond <i class="fas fa-dragon"></i></h5>
+                <p>The official digital toolset and game companion for D&D5e.</p>
+            </div>
+        </a>
+        <a href="{% url 'dnd_app:character_creator' %}" class="card selectable-project">
+            <div class="card-body">
+                <h5>dice.run <i class="fas fa-dice"></i></h5>
+                <p>A remarkably queryable/customizable digital dice roll simulator.</p>
+            </div>
+        </a>
+    </div>
+</div>
 {% endblock %}
