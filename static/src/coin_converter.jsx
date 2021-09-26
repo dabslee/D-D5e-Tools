@@ -1,7 +1,16 @@
 class CoinConverterApp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            coin_inputs : {
+                "cp" : 0,
+                "sp" : 0,
+                "ep" : 0,
+                "gp" : 0,
+                "pp" : 0,
+            },
+            convert_to : "cp",
+        };
     }
     
     render() {
@@ -25,18 +34,29 @@ class CoinConverterApp extends React.Component {
             "ep" : "#F2E279",
             "gp" : "#FFD700",
             "pp" : "#E5E4E2"
-        }
+        };
 
         // number input fields
         let numberinput = [];
         for (let key in COINS) {
             numberinput.push(
                 <div className="mb-3 row">
-                    <label for={key + "-field"} className="col-sm-6 col-form-label">
+                    <label htmlFor={key + "-field"} className="col-sm-6 col-form-label">
                         <i className="fas fa-stop-circle" style={{color: COIN_COLORS[key]}}></i> {COINS[key]} pieces ({key}):
                     </label>
                     <div className="col-sm-6">
-                        <input type="number" readonly className="form-control" id={key + "-field"} defaultValue="0"/>
+                        <input
+                            type="number"
+                            className="form-control"
+                            id={key + "-field"}
+                            defaultValue="0"
+                            onChange={() => {
+                                let coin_inputs = Object.assign({}, this.state.coin_inputs);
+                                coin_inputs[key] = parseInt($("#" + key + "-field").val());
+                                console.log(coin_inputs);
+                                this.setState({coin_inputs : coin_inputs});
+                            }}
+                        />
                     </div>
                 </div>
             );
@@ -47,13 +67,36 @@ class CoinConverterApp extends React.Component {
         for (let key in COINS) {
             radioselect.push(
                 <div className="form-check">
-                    <input type="radio" className="form-check-input" id={key+"-radio"} name="radioselect"></input>
-                    <label className="form-check-label" for={key+"-radio"}>
+                    <input
+                        type="radio"
+                        className="form-check-input"
+                        id={key+"-radio"}
+                        name="radioselect"
+                        value={key}
+                        defaultChecked={key=="cp"}
+                        onChange={() => this.setState({convert_to : key})}
+                    />
+                    <label className="form-check-label" htmlFor={key+"-radio"}>
                         <i className="fas fa-stop-circle" style={{color: COIN_COLORS[key]}}></i> {COINS[key]} pieces ({key}):
                     </label>
                 </div>
             )
         }
+
+        // output
+        let totalval = 0;
+        for (let key in COINS) {
+            totalval += this.state.coin_inputs[key] * COIN_VALUES[key];
+        }
+        totalval /= COIN_VALUES[this.state.convert_to];
+        let output = (
+            <div className="card">
+                <div className="card-body">
+                    <i className="fas fa-stop-circle" style={{color: COIN_COLORS[this.state.convert_to]}}></i>
+                    <b> {totalval} {COINS[this.state.convert_to]} Pieces ({this.state.convert_to})</b>
+                </div>
+            </div>
+        );
 
         return (
             <div>
@@ -131,6 +174,23 @@ class CoinConverterApp extends React.Component {
                     <div className="mb-3 col-sm-4">
                         <h2>Input</h2>
                         {numberinput}
+                        <div
+                            className="link-primary text-end"
+                            style={{cursor: "pointer"}}
+                            onClick={() => {
+                                for (let key in COINS) {
+                                    $("#" + key + "-field").val("0");
+                                }
+                                this.setState({coin_inputs : {
+                                    "cp" : 0,
+                                    "sp" : 0,
+                                    "ep" : 0,
+                                    "gp" : 0,
+                                    "pp" : 0,
+                                }});
+                                console.log(coin_inputs);
+                            }}
+                        >Clear inputs</div>
                     </div>
                     <div className="mb-3 col-sm-3">
                         <h2>Conversion Options</h2>
@@ -141,9 +201,7 @@ class CoinConverterApp extends React.Component {
                     </div>
                     <div className="mb-3 col-sm-3">
                         <h2>Output</h2>
-                        <p style={{color: COIN_COLORS["cp"], fontWeight: "bold"}}>
-                            <i className="fas fa-stop-circle"></i> 50 cp
-                        </p>
+                        {output}
                     </div>
                 </div>
             </div>
