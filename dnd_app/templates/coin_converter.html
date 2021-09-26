@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div id="coin_converter_react"></div>
+<script type="text/babel" src="{% static 'src/coin_converter.jsx' %}"></script>
+{% endblock %}

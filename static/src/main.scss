@@ -57,3 +57,10 @@ body {
     border-color: rgb(var(--bs-light-rgb));
     padding: 0.5rem;
 }
+
+.accordion-button {
+    background-color: rgba(0,0,0,0.05);
+}
+.accordion-button:not(.collapsed) {
+    background-color: rgba(0,0,0,0.05);
+}
