@@ -115,7 +115,7 @@ const ABILITIES = {
         as_text : "Wisdom reflects how attuned you are to the world around you and represents perceptiveness and intuition.",
         description : "Physical power"
     }),
-    CHARISM : new Ability({
+    CHARISMA : new Ability({
         as_text : "Charisma",
         description : "Charisma measures your ability to interact effectively with others. It includes such factors as confidence and eloquence, and it can represent a charming or commanding personality."
     }),
@@ -1812,6 +1812,26 @@ const TRAITS = {
         as_text : "Mask of the Wild",
         description : "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
     }),
+    LUCKY : new Trait({
+        as_text : "Lucky",
+        description : "When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+    }),
+    BRAVE : new Trait({
+        as_text : "Brave",
+        description : "You have advantage on saving throws against being frightened."
+    }),
+    HALFLING_NIMBLENESS : new Trait({
+        as_text : "Halfling Nimbleness",
+        description : "You can move through the space of any creature that is of a size larger than yours."
+    }),
+    NATURALLY_STEALTHY : new Trait({
+        as_text : "Naturally Stealthy",
+        description : "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you."
+    }),
+    STOUT_RESILIENCE : new Trait({
+        as_text : "Stout Resilience",
+        description : "You have advantage on saving throws against poison, and you have resistance against poison damage."
+    }),
 };
 
 // Race
@@ -1821,14 +1841,16 @@ class Race extends GameElement {
     proficiencies: GameElement[];
     additional_traits: Trait[];
     subraces: Race[];
+    speed: number;
     
-    constructor({as_text=null, alignment=null, ability=new Map(), proficiencies=[], additional_traits=[], subraces=[], description=""}) {
+    constructor({as_text=null, alignment=null, ability=new Map(), proficiencies=[], additional_traits=[], subraces=[], description="", speed=null}) {
         super({as_text : as_text, description : description});
         this.alignment = alignment;
         this.ability = ability;
         this.proficiencies = proficiencies;
         this.additional_traits = additional_traits;
         this.subraces = subraces;
+        this.speed = speed;
     }
 }
 const SUBRACES = {
@@ -1891,6 +1913,26 @@ const SUBRACES = {
             TRAITS.MASK_OF_THE_WILD,
         ]
     }),
+    LIGHTFOOT_HALFLING : new Race({
+        as_text : "Lightfoot Halfling",
+        description : "As a lightfoot halfling, you can easily hide from notice, even using other people as cover. You’re inclined to be affable and get along well with others.",
+        ability : new Map([
+            [ABILITIES.CHARISMA, 1],
+        ]),
+        additional_traits : [
+            TRAITS.NATURALLY_STEALTHY,
+        ]
+    }),
+    STOUT_HALFLING : new Race({
+        as_text : "Stout Halfling",
+        description : "As a stout halfling, you’re hardier than average and have some resistance to poison. Some say that stouts have dwarven blood.",
+        ability : new Map([
+            [ABILITIES.CONSTITUTION, 1],
+        ]),
+        additional_traits : [
+            TRAITS.STOUT_RESILIENCE,
+        ]
+    }),
 }
 const RACES = {
     DWARF : new Race({
@@ -1919,7 +1961,8 @@ const RACES = {
             SUBRACES.HILL_DWARF,
             SUBRACES.MOUNTAIN_DWARF,
         ],
-        description : "Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal. Though they stand well under 5 feet tall, dwarves are so broad and compact that they can weigh as much as a human standing nearly two feet taller. Their courage and endurance are also easily a match for any of the larger folk."
+        description : "Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal. Though they stand well under 5 feet tall, dwarves are so broad and compact that they can weigh as much as a human standing nearly two feet taller. Their courage and endurance are also easily a match for any of the larger folk.",
+        speed : 25
     }),
     ELF : new Race({
         as_text : "Elf",
@@ -1940,11 +1983,43 @@ const RACES = {
         subraces : [
             SUBRACES.HIGH_ELF,
             SUBRACES.WOOD_ELF,
-        ]
+        ],
+        speed : 30
     }),
     HALFLING : new Race({
         as_text : "Halfling",
         description : "The diminutive halflings survive in a world full of larger creatures by avoiding notice or, barring that, avoiding offense.",
-        
+        ability : new Map([
+            [ABILITIES.DEXTERITY, 2],
+        ]),
+        alignment : [
+            ALIGNMENTS.LAWFUL_GOOD,
+        ],
+        speed : 25,
+        additional_traits : [
+            TRAITS.LUCKY,
+            TRAITS.BRAVE,
+            TRAITS.HALFLING_NIMBLENESS,
+        ],
+        subraces : [
+            SUBRACES.LIGHTFOOT,
+            SUBRACES.STOUT,
+        ]
     }),
+    HUMAN : new Race({
+        as_text : "Human",
+        description : "Humans are the most adaptable and ambitious people among the common races. Whatever drives them, humans are the innovators, the achievers, and the pioneers of the worlds.",
+        ability : new Map([
+            [ABILITIES.STRENGTH, 1],
+            [ABILITIES.CONSTITUTION, 1],
+            [ABILITIES.CHARISMA, 1],
+            [ABILITIES.INTELLIGENCE, 1],
+            [ABILITIES.WISDOM, 1],
+            [ABILITIES.DEXTERITY, 1],
+        ]),
+        speed : 30,
+        additional_traits : [
+            TRAITS.EXTRA_LANGUAGE
+        ]
+    })
 };
