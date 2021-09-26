@@ -44,7 +44,7 @@ class Wallet {
 class GameElement {
     as_text: string;
     description: string;
-
+    
     constructor({as_text=null, description=""}) {
         this.as_text = as_text;
         this.description = description;
@@ -1784,11 +1784,39 @@ const TRAITS = {
         as_text : "Dwarven Toughness",
         description : "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
     }),
+    KEEN_SENSES : new Trait({
+        as_text : "Keen Senses",
+        description : "You have proficiency in the Perception skill."
+    }),
+    FEY_ANCESTRY : new Trait({
+        as_text : "Fey Ancestry",
+        description : "You have advantage on saving throws against being charmed, and magic can’t put you to sleep."
+    }),
+    TRANCE : new Trait({
+        as_text : "Trance",
+        description : "Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is “trance.”) While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep."
+    }),
+    CANTRIP : new Trait({
+        as_text : "Cantrip",
+        description : "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
+    }),
+    EXTRA_LANGUAGE : new Trait({
+        as_text : "Extra language",
+        description : "You can speak, read, and write one extra language of your choice."
+    }),
+    FLEET_OF_FOOT : new Trait({
+        as_text : "Fleet of Foot",
+        description : "Your base walking speed increases to 35 feet."
+    }),
+    MASK_OF_THE_WILD : new Trait({
+        as_text : "Mask of the Wild",
+        description : "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+    }),
 };
 
 // Race
 class Race extends GameElement {
-    alignment: Alignment;
+    alignment: Alignment[];
     ability: Map<Ability, number>;
     proficiencies: GameElement[];
     additional_traits: Trait[];
@@ -1805,6 +1833,7 @@ class Race extends GameElement {
 }
 const SUBRACES = {
     HILL_DWARF : new Race({
+        as_text : "Hill Dwarf",
         ability : new Map([
             [ABILITIES.WISDOM, 1],
         ]),
@@ -1814,6 +1843,7 @@ const SUBRACES = {
         description : "As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience."
     }),
     MOUNTAIN_DWARF : new Race({
+        as_text : "Mountain Dwarf",
         ability : new Map([
             [ABILITIES.STRENGTH, 2]
         ]),
@@ -1826,11 +1856,47 @@ const SUBRACES = {
             })
         ],
         description : "As a mountain dwarf, you’re strong and hardy, accustomed to a difficult life in rugged terrain."
-    })
+    }),
+    HIGH_ELF : new Race({
+        as_text : "High Elf",
+        description : "As a high elf, you have a keen mind and a mastery of at least the basics of magic",
+        ability : new Map([
+            [ABILITIES.INTELLIGENCE, 1],
+        ]),
+        proficiencies : [
+            WEAPONS.LONGSWORD,
+            WEAPONS.SHORTSWORD,
+            WEAPONS.SHORT_BOW,
+            WEAPONS.LONGBOW,
+        ],
+        additional_traits : [
+            TRAITS.CANTRIP,
+            TRAITS.EXTRA_LANGUAGE
+        ],
+    }),
+    WOOD_ELF : new Race({
+        as_text : "Wood Elf",
+        description : "As a wood elf, you have keen senses and intuition, and your fleet feet carry you quickly and stealthily through your native forests.",
+        ability : new Map([
+            [ABILITIES.WISDOM, 1],
+        ]),
+        proficiencies : [
+            WEAPONS.LONGSWORD,
+            WEAPONS.SHORTSWORD,
+            WEAPONS.SHORT_BOW,
+            WEAPONS.LONGBOW,
+        ],
+        additional_traits : [
+            TRAITS.FLEET_OF_FOOT,
+            TRAITS.MASK_OF_THE_WILD,
+        ]
+    }),
 }
 const RACES = {
     DWARF : new Race({
-        alignment : ALIGNMENTS.LAWFUL_GOOD,
+        alignment : [
+            ALIGNMENTS.LAWFUL_GOOD
+        ],
         ability : new Map([
             [ABILITIES.CONSTITUTION, 2],
         ]),
@@ -1855,5 +1921,30 @@ const RACES = {
         ],
         description : "Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal. Though they stand well under 5 feet tall, dwarves are so broad and compact that they can weigh as much as a human standing nearly two feet taller. Their courage and endurance are also easily a match for any of the larger folk."
     }),
-    
+    ELF : new Race({
+        as_text : "Elf",
+        description : "Elves are a magical people of otherworldly grace, living in the world but not entirely part of it.",
+        ability : new Map([
+            [ABILITIES.DEXTERITY, 2],
+        ]),
+        alignment : [
+            ALIGNMENTS.CHAOTIC_GOOD,
+            ALIGNMENTS.CHAOTIC_NEUTRAL,
+        ],
+        additional_traits : [
+            TRAITS.DARKVISION,
+            TRAITS.KEEN_SENSES,
+            TRAITS.FEY_ANCESTRY,
+            TRAITS.TRANCE,
+        ],
+        subraces : [
+            SUBRACES.HIGH_ELF,
+            SUBRACES.WOOD_ELF,
+        ]
+    }),
+    HALFLING : new Race({
+        as_text : "Halfling",
+        description : "The diminutive halflings survive in a world full of larger creatures by avoiding notice or, barring that, avoiding offense.",
+        
+    }),
 };
