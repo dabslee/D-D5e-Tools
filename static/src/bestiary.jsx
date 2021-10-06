@@ -1,16 +1,31 @@
 class BestiaryApp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = {
+            results_list : null
+        };
     }
 
     loadJson = () => {
+        var that = this;
         $.getJSON('https://www.dnd5eapi.co/api/monsters?name=' + $("#ffield-name").val(), function(json_content) {
-            $("#json-content").html(JSON.stringify(json_content));
+            that.setState({results_list : json_content.results});
         });
     }
     
     render() {
+        let results_table = []
+        for (let result in this.state.results_list) {
+            console.log(result);
+            results_table.push(
+                <tr>
+                    <td>{this.state.results_list[result].name}</td>
+                    <td>{this.state.results_list[result].name}</td>
+                    <td>{this.state.results_list[result].name}</td>
+                </tr>
+            )
+        }
+
         return (
             <div>
                 <h1 className="mt-5">Bestiary</h1>
@@ -40,27 +55,24 @@ class BestiaryApp extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <table className="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>CR</th>
-                                    <th>Type</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Placeholder</td>
-                                    <td>Placeholder</td>
-                                    <td>Placeholder</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div className="scrollable-table">
+                            <table className="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>CR</th>
+                                        <th>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {results_table}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div className="col-sm-6 card mb-3 border-warning" style={{height: "fit-content"}}>
                         <div className="card-body">
                             <h4 className="card-title">Monster name</h4>
-                            <div id="json-content"></div>
                         </div>
                     </div>
                 </div>
