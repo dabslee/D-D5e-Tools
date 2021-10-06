@@ -1,0 +1,84 @@
+:root {
+  --bs-light-rgb: 230,230,230;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container {
+  max-width: 80rem;
+}
+
+#content {
+  flex: 2 2 auto;
+}
+
+#footer {
+  padding: 2rem 0;
+}
+
+.race-image {
+  height: 20rem;
+  width: fit-content;
+  margin: 1rem;
+}
+
+.badge {
+  margin: 0.1rem 0.2rem;
+}
+
+.selectable-card {
+  cursor: pointer;
+}
+.selectable-card:hover {
+  box-shadow: 0px 0px 1rem var(--bs-gray-300);
+}
+
+.ability-score-badge {
+  cursor: move;
+  background-color: var(--bs-secondary);
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  margin: 0 0.2rem;
+  border-radius: 0.5rem;
+  width: 2.5rem;
+  text-align: center;
+}
+
+.equip-box {
+  height: 10rem;
+  resize: vertical;
+  overflow: scroll;
+  border: solid 1px;
+  border-color: rgb(var(--bs-light-rgb));
+  padding: 0.5rem;
+}
+
+.accordion-button {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.accordion-button:not(.collapsed) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.selectable-project {
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
+  text-decoration: none;
+  color: var(--bs-dark);
+}
+.selectable-project:hover {
+  transform: scale(1.02);
+  transform: translateX(0.5rem);
+  box-shadow: 0.25rem 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+.text-muted {
+  opacity: 0.7;
+}
+
+/*# sourceMappingURL=main.css.map */

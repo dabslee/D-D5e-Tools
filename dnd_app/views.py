@@ -12,3 +12,9 @@ def coin_converter(request):
         "current_page": "coin_converter"
     }
     return render(request, "coin_converter.html", context)
+
+def bestiary(request):
+    context = {
+        "current_page": "bestiary"
+    }
+    return render(request, "bestiary.html", context)

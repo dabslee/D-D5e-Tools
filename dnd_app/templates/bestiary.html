@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Bestiary
+{% endblock %}
+
+{% block content %}
+<div id="bestiary_react"></div>
+<script type="text/babel" src="{% static 'src/bestiary.jsx' %}"></script>
+{% endblock %}
