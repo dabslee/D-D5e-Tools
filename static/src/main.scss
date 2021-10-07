@@ -96,3 +96,11 @@ body {
         table-layout: fixed;
     }
 }
+
+.ability-cell {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 1rem;
+    margin-bottom: 1rem;
+}
