@@ -2,7 +2,79 @@ function getModifier(score) {
     return Math.floor((score-10)/2);
 }
 function withSign(score) {
-    return <span>{score >= 0 ? "+" : ""}{score}</span>
+    return (
+        <span>
+            {(score >= 0 ? "+" : "")}{score.toString()}
+        </span>
+    );
+}
+function withSignColor(score) {
+    return (
+        <span className={score >= 0 ? (score == 0 ? "text-muted" : "text-success") : "text-danger"}>
+            {(score >= 0 ? "+" : "")}{score.toString()}
+        </span>
+    );
+}
+
+const badge_styles = {
+    "ability" : {
+        style : "bg-light text-dark",
+        icon : "star",
+    },
+    "skill" : {
+        style : "bg-dark",
+        icon : "book",
+    },
+    "alignment" : {
+        style : "bg-warning text-dark",
+        icon : "balance-scale",
+    },
+    "tool" : {
+        style : "bg-secondary",
+        icon : "tools",
+    },
+    "weapon" : {
+        style : "bg-secondary",
+        icon : "fist-raised",
+    },
+    "spell" : {
+        style : "bg-primary",
+        icon : "fire",
+    },
+    "armor" : {
+        style : "bg-secondary",
+        icon : "shield-alt",
+    },
+    "vehicle" : {
+        style : "bg-secondary",
+        icon : "horse",
+    },
+    "good" : {
+        style : "bg-secondary",
+        icon : "boxes",
+    },
+    "coin" : {
+        style : "bg-transparent text-warning",
+        icon : "stop-circle"
+    },
+    "other" : {
+        style: "bg-transparent text-danger",
+        icon : "exclamation"
+    },
+    "trait" : {
+        style : "bg-primary",
+        icon : "eye",
+    }
+}
+class Badge extends React.Component {
+    render() {
+        let style = badge_styles[this.props.type];
+        return (
+            <span className={"badge " + style.style}>
+                <i className={"fas fa-" + style.icon}></i> {this.props.text}
+            </span>
+        )
+    }
 }
 
 class BestiaryApp extends React.Component {
@@ -61,21 +133,69 @@ class BestiaryApp extends React.Component {
                 speed.push(<span className="me-2">{monster.speed[method]} ({method})</span>);
 
             // proficiencies
-            let saving_throws = [];
-            let skill_profs = [];
+            let profs = {};
             for (let item in monster.proficiencies) {
                 let name = monster.proficiencies[item].proficiency.name;
-                if (name.includes("Saving Throw")) {
-                    name = name.substring(14, name.length);
-                    saving_throws.push(
-                        <span className="badge bg-light text-success"><i className="fas fa-star"></i> {name} {withSign(monster.proficiencies[item].value)}</span>
-                    );
-                } else if (name.includes("Skill")) {
-                    name = name.substring(7, name.length);
-                    skill_profs.push(
-                        <span className="badge bg-dark"><i className="fas fa-book"></i> {name} {withSign(monster.proficiencies[item].value)}</span>
-                    );
+                let label = name.split(": ")[0].toLowerCase();
+                if (label == "saving throw") label = "ability";
+                let value = name.split(": ")[1];
+
+                if (!(label in badge_styles)) label = "other";
+                if (!(label in profs)) {
+                    profs[label] = [];
                 }
+                profs[label].push(
+                    <Badge type={label} text={[value, " ", withSign(monster.proficiencies[item].value)]}/>
+                );
+            }
+            let profs_list = [];
+            for (let label in profs) {
+                profs_list.push(
+                    <li>
+                        {label[0].toUpperCase() + label.slice(1)}: {profs[label]}
+                    </li>
+                );
+            }
+            let profs_section = null;
+            if (profs_list.length > 0) {
+                profs_section = (
+                    <div>
+                        <hr/>
+                        <b>Proficiencies</b>
+                        <ul>
+                            {profs_list}
+                        </ul>
+                    </div>
+                );
+            }
+
+            // immunities section
+            let vul = []; // damage vulnerabilities
+            for (let item in monster.damage_vulnerabilities) vul.push(<span>{monster.damage_vulnerabilities[item]}. </span>)
+            let res = []; // damage resistances
+            for (let item in monster.damage_resistances) res.push(<span>{monster.damage_resistances[item]}. </span>)
+            let imm = []; // damage immunities
+            for (let item in monster.damage_immunities) imm.push(<span>{monster.damage_immunities[item]}. </span>)
+            let cimm = []; // conditional immunities
+            for (let item in monster.damage_vulnerabilities) cimm.push(<span>{monster.damage_vulnerabilities[item]}. </span>)
+            let immunities_section = vul.length + res.length + imm.length + cimm.length > 0 ? (
+                <div>
+                    <b>Vulnerabilities and Resistances</b>
+                    <ul>
+                        {vul.length > 0 ? <li>Vulnerabilities: {vul}</li> : null}
+                        {res.length > 0 ? <li>Resistances: {res}</li> : null}
+                        {imm.length > 0 ? <li>Damage immunities: {imm}</li> : null}
+                        {cimm.length > 0 ? <li>Conditional immunities: {cimm}</li> : null}
+                    </ul>
+                </div>
+            ) : null;
+
+            // senses
+            let senses = [];
+            for (let sense in monster.senses) {
+                senses.push(
+                    <Badge type="trait" text={[sense, " ", <span>({monster.senses[sense]})</span>]} />
+                );
             }
 
             monster_card = (
@@ -89,48 +209,45 @@ class BestiaryApp extends React.Component {
                             <span className="me-1">{monster.size}</span>
                             <span className="me-1">{monster.type}{monster.subtype ? " ("+monster.subtype+")" : ""}</span>
                         </div>
-                        <span className="badge bg-warning text-dark"><i className="fas fa-balance-scale"></i> {monster.alignment}</span>
+                        <Badge type="alignment" text={monster.alignment}/>
                     </div>
                     <div className="d-flex flex-sm-row flex-column flex-wrap">
+                        <span className="me-3"><b>XP:</b> {monster.xp}</span>
                         <span className="me-3"><b>AC:</b> {monster.armor_class}</span>
                         <span className="me-3"><b>Hit Points:</b> {monster.hit_points}</span>
                         <span className="me-3"><b>Speed:</b> {speed}</span>
+                        {Object.keys(monster.languages).length > 0 ? <span className="me-3"><b>Languages:</b> {monster.languages}</span> : null}
+                        {senses.length > 0 ? <span className="me-3"><b>Senses:</b> {senses}</span> : null}
                     </div>
                     <hr/>
                     <div className="d-flex flex-sm-row flex-wrap align-items-center justify-content-center">
                         <div className="ability-cell">
                             <b>STR</b>
-                            <span>{monster.strength} ({withSign(getModifier(monster.strength))})</span>
+                            <span>{monster.strength} ({withSignColor(getModifier(monster.strength))})</span>
                         </div>
                         <div className="ability-cell">
                             <b>DEX</b>
-                            <span>{monster.dexterity} ({withSign(getModifier(monster.dexterity))})</span>
+                            <span>{monster.dexterity} ({withSignColor(getModifier(monster.dexterity))})</span>
                         </div>
                         <div className="ability-cell">
                             <b>CON</b>
-                            <span>{monster.constitution} ({withSign(getModifier(monster.constitution))})</span>
+                            <span>{monster.constitution} ({withSignColor(getModifier(monster.constitution))})</span>
                         </div>
                         <div className="ability-cell">
                             <b>INT</b>
-                            <span>{monster.intelligence} ({withSign(getModifier(monster.intelligence))})</span>
+                            <span>{monster.intelligence} ({withSignColor(getModifier(monster.intelligence))})</span>
                         </div>
                         <div className="ability-cell">
                             <b>WIS</b>
-                            <span>{monster.wisdom} ({withSign(getModifier(monster.wisdom))})</span>
+                            <span>{monster.wisdom} ({withSignColor(getModifier(monster.wisdom))})</span>
                         </div>
                         <div className="ability-cell">
                             <b>CHA</b>
-                            <span>{monster.charisma} ({withSign(getModifier(monster.charisma))})</span>
+                            <span>{monster.charisma} ({withSignColor(getModifier(monster.charisma))})</span>
                         </div>
                     </div>
-                    <hr/>
-                    <div>
-                        <b>Proficiencies</b>
-                        <ul>
-                            <li>Saving throws: {saving_throws}</li>
-                            <li>Skills: {skill_profs}</li>
-                        </ul>
-                    </div>
+                    {profs_section}
+                    {immunities_section}
                 </div>
             );
         }
